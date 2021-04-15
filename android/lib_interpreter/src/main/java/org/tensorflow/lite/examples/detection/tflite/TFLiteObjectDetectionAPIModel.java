@@ -225,6 +225,8 @@ public class TFLiteObjectDetectionAPIModel implements Detector {
 
     final ArrayList<Recognition> recognitions = new ArrayList<>(numDetectionsOutput);
     for (int i = 0; i < numDetectionsOutput; ++i) {
+      // added
+      Log.i("Recognitions", String.valueOf(recognitions.get(0).getTitle()));
       final RectF detection =
           new RectF(
               outputLocations[0][i][1] * inputSize,

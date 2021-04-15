@@ -27,6 +27,7 @@ import android.graphics.RectF;
 import android.graphics.Typeface;
 import android.media.ImageReader.OnImageAvailableListener;
 import android.os.SystemClock;
+import android.util.Log;
 import android.util.Size;
 import android.util.TypedValue;
 import android.widget.Toast;
@@ -179,6 +180,10 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
             LOGGER.i("Running detection on image " + currTimestamp);
             final long startTime = SystemClock.uptimeMillis();
             final List<Detector.Recognition> results = detector.recognizeImage(croppedBitmap);
+            // logging result
+            Log.i("Recognitionss", String.valueOf(results.get(0).getTitle()));
+            // passing the detected alphabet to xml
+//            DetectorActivity.super.toShowOutput.setText(String.valueOf(results.get(0).getTitle()));
             lastProcessingTimeMs = SystemClock.uptimeMillis() - startTime;
 
             cropCopyBitmap = Bitmap.createBitmap(croppedBitmap);

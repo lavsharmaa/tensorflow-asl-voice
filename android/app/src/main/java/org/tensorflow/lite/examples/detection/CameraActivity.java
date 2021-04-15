@@ -43,6 +43,7 @@ import android.view.View;
 import android.view.ViewTreeObserver;
 import android.view.WindowManager;
 import android.widget.CompoundButton;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -85,6 +86,7 @@ public abstract class CameraActivity extends AppCompatActivity
   private ImageView plusImageView, minusImageView;
   private SwitchCompat apiSwitchCompat;
   private TextView threadsTextView;
+  protected EditText toShowOutput;
 
   @Override
   protected void onCreate(final Bundle savedInstanceState) {
@@ -111,6 +113,7 @@ public abstract class CameraActivity extends AppCompatActivity
     gestureLayout = findViewById(R.id.gesture_layout);
     sheetBehavior = BottomSheetBehavior.from(bottomSheetLayout);
     bottomSheetArrowImageView = findViewById(R.id.bottom_sheet_arrow);
+    toShowOutput = findViewById(R.id.editText);
 
     ViewTreeObserver vto = gestureLayout.getViewTreeObserver();
     vto.addOnGlobalLayoutListener(
