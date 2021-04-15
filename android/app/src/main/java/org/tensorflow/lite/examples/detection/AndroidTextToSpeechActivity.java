@@ -70,45 +70,69 @@ package org.tensorflow.lite.examples.detection;
 //    }
 //}
 
-import android.app.Activity;
-import android.os.Bundle;
-import android.speech.tts.TextToSpeech;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import java.util.Locale;
-import android.widget.Toast;
+//import android.app.Activity;
+//import android.os.Bundle;
+//import android.speech.tts.TextToSpeech;
+//import android.view.View;
+//import android.widget.Button;
+//import android.widget.EditText;
+//import java.util.Locale;
+//import android.widget.Toast;
+//
+//public class AndroidTextToSpeechActivity extends Activity {
+//    TextToSpeech t1;
+//    EditText ed1;
+//    Button b1;
+//
+//    @Override
+//    protected void onCreate(Bundle savedInstanceState) {
+//        super.onCreate(savedInstanceState);
+//        setContentView(R.layout.tfe_od_layout_bottom_sheet);
+//        ed1=(EditText)findViewById(R.id.editText);
+//        b1=(Button)findViewById(R.id.button);
+//
+//        t1=new TextToSpeech(getApplicationContext(), status -> {
+//            if(status != TextToSpeech.ERROR) {
+//                t1.setLanguage(Locale.UK);
+//            }
+//        });
+//
+//        b1.setOnClickListener(v -> {
+//            String toSpeak = ed1.getText().toString();
+//            Toast.makeText(getApplicationContext(), toSpeak,Toast.LENGTH_SHORT).show();
+//            t1.speak(toSpeak, TextToSpeech.QUEUE_FLUSH, null);
+//        });
+//    }
+//
+//    public void onPause(){
+//        if(t1 !=null){
+//            t1.stop();
+//            t1.shutdown();
+//        }
+//        super.onPause();
+//    }
+//}
 
-public class AndroidTextToSpeechActivity extends Activity {
-    TextToSpeech t1;
-    EditText ed1;
-    Button b1;
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.tfe_od_layout_bottom_sheet);
-        ed1=(EditText)findViewById(R.id.editText);
-        b1=(Button)findViewById(R.id.button);
-
-        t1=new TextToSpeech(getApplicationContext(), status -> {
-            if(status != TextToSpeech.ERROR) {
-                t1.setLanguage(Locale.UK);
-            }
-        });
-
-        b1.setOnClickListener(v -> {
-            String toSpeak = ed1.getText().toString();
-            Toast.makeText(getApplicationContext(), toSpeak,Toast.LENGTH_SHORT).show();
-            t1.speak(toSpeak, TextToSpeech.QUEUE_FLUSH, null);
-        });
-    }
-
-    public void onPause(){
-        if(t1 !=null){
-            t1.stop();
-            t1.shutdown();
-        }
-        super.onPause();
-    }
-}
+//import android.media.MediaPlayer;
+//import android.os.Bundle;
+//import android.view.View;
+//import android.widget.Button;
+//
+//import androidx.appcompat.app.AppCompatActivity;
+//
+//public class AndroidTextToSpeechActivity extends AppCompatActivity {
+//    Button bt;
+//
+//    @Override
+//    protected void onCreate(Bundle savedInstanceState){
+//        super.onCreate(savedInstanceState);
+//        setContentView(R.layout.tfe_od_layout_bottom_sheet);
+//        bt = (Button)findViewById(R.id.button);
+//        final MediaPlayer mp = MediaPlayer.create(this, R.raw.letter-a);
+//        bt.setOnClickListener(new View.OnClickListener(){
+//            public void onClick(View view){
+//                np.start();
+//            }
+//        }
+//    }
+//}

@@ -191,7 +191,6 @@ celerybeat.pid
 *.sage.py
 
 # Environments
-.env
 .env.test
 
 # parcel-bundler cache (https://parceljs.org/)
@@ -227,10 +226,6 @@ dist
 
 # VSCode config
 .vscode/
-.venv
-env/
-venv/
-ENV/
 env.bak/
 venv.bak/
 
