@@ -1,5 +1,5 @@
 <p align="center">
-  <h2 align="center">American Sign Language Detection Model with voice feedback SSD_Mobilenet trained on Google Colab</h2>
+  <h2 align="center">American Sign Language Detection Model with voice feedback using SSD_Mobilenet trained on Google Colab</h2>
 </p>
 
 <p align="center">
