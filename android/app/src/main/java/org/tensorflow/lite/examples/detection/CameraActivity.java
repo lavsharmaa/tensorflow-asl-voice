@@ -29,19 +29,25 @@ import android.media.Image;
 import android.media.Image.Plane;
 import android.media.ImageReader;
 import android.media.ImageReader.OnImageAvailableListener;
+import android.media.MediaPlayer;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.Trace;
+
+import androidx.annotation.UiThread;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SwitchCompat;
 import androidx.appcompat.widget.Toolbar;
+
+import android.speech.tts.TextToSpeech;
 import android.util.Size;
 import android.view.Surface;
 import android.view.View;
 import android.view.ViewTreeObserver;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -51,8 +57,12 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import java.nio.ByteBuffer;
+import java.util.List;
+
+
 import org.tensorflow.lite.examples.detection.env.ImageUtils;
 import org.tensorflow.lite.examples.detection.env.Logger;
+import org.tensorflow.lite.examples.detection.tflite.Detector;
 
 public abstract class CameraActivity extends AppCompatActivity
     implements OnImageAvailableListener,
@@ -83,10 +93,10 @@ public abstract class CameraActivity extends AppCompatActivity
 
   protected TextView frameValueTextView, cropValueTextView, inferenceTimeTextView;
   protected ImageView bottomSheetArrowImageView;
-  private ImageView plusImageView, minusImageView;
+  private ImageView plusImageView, minusImageView, speakImageView;
   private SwitchCompat apiSwitchCompat;
   private TextView threadsTextView;
-  protected EditText toShowOutput;
+  protected TextView toShowOutput;
 
   @Override
   protected void onCreate(final Bundle savedInstanceState) {
@@ -108,6 +118,8 @@ public abstract class CameraActivity extends AppCompatActivity
     threadsTextView = findViewById(R.id.threads);
     plusImageView = findViewById(R.id.plus);
     minusImageView = findViewById(R.id.minus);
+    // added
+    speakImageView = findViewById(R.id.speak1);
     apiSwitchCompat = findViewById(R.id.api_info_switch);
     bottomSheetLayout = findViewById(R.id.bottom_sheet_layout);
     gestureLayout = findViewById(R.id.gesture_layout);
@@ -125,7 +137,7 @@ public abstract class CameraActivity extends AppCompatActivity
             } else {
               gestureLayout.getViewTreeObserver().removeOnGlobalLayoutListener(this);
             }
-            //                int width = bottomSheetLayout.getMeasuredWidth();
+            int width = bottomSheetLayout.getMeasuredWidth();
             int height = gestureLayout.getMeasuredHeight();
 
             sheetBehavior.setPeekHeight(height);
@@ -170,6 +182,8 @@ public abstract class CameraActivity extends AppCompatActivity
 
     plusImageView.setOnClickListener(this);
     minusImageView.setOnClickListener(this);
+    speakImageView.setOnClickListener(this);
+
   }
 
   protected int[] getRgbBytes() {
@@ -524,6 +538,116 @@ public abstract class CameraActivity extends AppCompatActivity
       numThreads--;
       threadsTextView.setText(String.valueOf(numThreads));
       setNumThreads(numThreads);
+    }
+    // voice for the detected alphabet
+    else if (v.getId() == R.id.speak1) {
+      // this is the value we are showing
+      EditText mEdit = findViewById(R.id.editText);
+      String letter = mEdit.getText().toString();
+      if (letter.equalsIgnoreCase("A")) {
+        final MediaPlayer mp100 = MediaPlayer.create(this, R.raw.letter_a);
+        mp100.start();
+      }
+      else if (letter.equalsIgnoreCase("B")) {
+        final MediaPlayer mp100 = MediaPlayer.create(this, R.raw.letter_b);
+        mp100.start();
+      }
+      else if (letter.equalsIgnoreCase("C")) {
+        final MediaPlayer mp100 = MediaPlayer.create(this, R.raw.letter_c);
+        mp100.start();
+      }
+      else if (letter.equalsIgnoreCase("D")) {
+        final MediaPlayer mp100 = MediaPlayer.create(this, R.raw.letter_d);
+        mp100.start();
+      }
+      else if (letter.equalsIgnoreCase("E")) {
+        final MediaPlayer mp100 = MediaPlayer.create(this, R.raw.letter_e);
+        mp100.start();
+      }
+      else if (letter.equalsIgnoreCase("F")) {
+        final MediaPlayer mp100 = MediaPlayer.create(this, R.raw.letter_f);
+        mp100.start();
+      }
+      else if (letter.equalsIgnoreCase("G")) {
+        final MediaPlayer mp100 = MediaPlayer.create(this, R.raw.letter_g);
+        mp100.start();
+      }
+      else if (letter.equalsIgnoreCase("H")) {
+        final MediaPlayer mp100 = MediaPlayer.create(this, R.raw.letter_h);
+        mp100.start();
+      }
+      else if (letter.equalsIgnoreCase("I")) {
+        final MediaPlayer mp100 = MediaPlayer.create(this, R.raw.letter_i);
+        mp100.start();
+      }
+      else if (letter.equalsIgnoreCase("J")) {
+        final MediaPlayer mp100 = MediaPlayer.create(this, R.raw.letter_j);
+        mp100.start();
+      }
+      else if (letter.equalsIgnoreCase("K")) {
+        final MediaPlayer mp100 = MediaPlayer.create(this, R.raw.letter_k);
+        mp100.start();
+      }
+      else if (letter.equalsIgnoreCase("L")) {
+        final MediaPlayer mp100 = MediaPlayer.create(this, R.raw.letter_l);
+        mp100.start();
+      }
+      else if (letter.equalsIgnoreCase("M")) {
+        final MediaPlayer mp100 = MediaPlayer.create(this, R.raw.letter_m);
+        mp100.start();
+      }
+      else if (letter.equalsIgnoreCase("N")) {
+        final MediaPlayer mp100 = MediaPlayer.create(this, R.raw.letter_n);
+        mp100.start();
+      }
+      else if (letter.equalsIgnoreCase("O")) {
+        final MediaPlayer mp100 = MediaPlayer.create(this, R.raw.letter_o);
+        mp100.start();
+      }
+      else if (letter.equalsIgnoreCase("P")) {
+        final MediaPlayer mp100 = MediaPlayer.create(this, R.raw.letter_p);
+        mp100.start();
+      }
+      else if (letter.equalsIgnoreCase("Q")) {
+        final MediaPlayer mp100 = MediaPlayer.create(this, R.raw.letter_q);
+        mp100.start();
+      }
+      else if (letter.equalsIgnoreCase("R")) {
+        final MediaPlayer mp100 = MediaPlayer.create(this, R.raw.letter_r);
+        mp100.start();
+      }
+      else if (letter.equalsIgnoreCase("S")) {
+        final MediaPlayer mp100 = MediaPlayer.create(this, R.raw.letter_s);
+        mp100.start();
+      }
+      else if (letter.equalsIgnoreCase("T")) {
+        final MediaPlayer mp100 = MediaPlayer.create(this, R.raw.letter_t);
+        mp100.start();
+      }
+      else if (letter.equalsIgnoreCase("U")) {
+        final MediaPlayer mp100 = MediaPlayer.create(this, R.raw.letter_u);
+        mp100.start();
+      }
+      else if (letter.equalsIgnoreCase("V")) {
+        final MediaPlayer mp100 = MediaPlayer.create(this, R.raw.letter_v);
+        mp100.start();
+      }
+      else if (letter.equalsIgnoreCase("W")) {
+        final MediaPlayer mp100 = MediaPlayer.create(this, R.raw.letter_w);
+        mp100.start();
+      }
+      else if (letter.equalsIgnoreCase("X")) {
+        final MediaPlayer mp100 = MediaPlayer.create(this, R.raw.letter_x);
+        mp100.start();
+      }
+      else if (letter.equalsIgnoreCase("Y")) {
+        final MediaPlayer mp100 = MediaPlayer.create(this, R.raw.letter_y);
+        mp100.start();
+      }
+      else if (letter.equalsIgnoreCase("Z")) {
+        final MediaPlayer mp100 = MediaPlayer.create(this, R.raw.letter_z);
+        mp100.start();
+      }
     }
   }
 

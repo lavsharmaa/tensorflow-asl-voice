@@ -183,7 +183,7 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
             // logging result
             Log.i("Recognitionss", String.valueOf(results.get(0).getTitle()));
             // passing the detected alphabet to xml
-//            DetectorActivity.super.toShowOutput.setText(String.valueOf(results.get(0).getTitle()));
+            DetectorActivity.super.toShowOutput.setText(String.valueOf(results.get(0).getTitle()));
             lastProcessingTimeMs = SystemClock.uptimeMillis() - startTime;
 
             cropCopyBitmap = Bitmap.createBitmap(croppedBitmap);
