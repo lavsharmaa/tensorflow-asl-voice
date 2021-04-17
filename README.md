@@ -61,3 +61,4 @@ CameraActivity.java
 ```
 - Not the ideal way to implement this method but as ```TTS``` or ```Text-To-Speech``` was causing me some issue so I implemented the feedback in a different manner. TTS would be the best approach or else you need to define sound for every alphabet or word inside your ```raw``` folder in android.
 - You can raise the issue if you face any problem in the code.
+- Thanks to [David Lee](https://www.linkedin.com/in/daviddaeshinlee/) for amazing DataSet.
